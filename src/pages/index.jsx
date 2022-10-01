@@ -47,7 +47,12 @@ const Homepage = () => {
 
         <div className=" w-full mt-10 md:mt-0 md:ml-8 h-[90%]">
           <div className="w-full md:h-full">
-            <Cryptos count={10} />
+            <div className="bg-white bg-opacity-50 backdrop-filter py-4 px-6 rounded-md">
+              <h3 className="text-2xl text-slate-500 font-bold py-3">
+                World's Top 10 Cryptos
+              </h3>
+              <Cryptos count={10} />
+            </div>
           </div>
         </div>
       </main>
