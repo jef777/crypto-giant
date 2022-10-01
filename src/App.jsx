@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom';
 import Layout from './templates/layout';
 import HomePage from './pages/index';
 import CryptoDetails from './pages/CryptoDetails';
+import Cryptocurrencies from './pages/Cyptocurencies';
 
 export default function App() {
   const element = useRoutes([
@@ -11,6 +12,7 @@ export default function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: '/cryptocurrency/:coinId', element: <CryptoDetails /> },
+        { path: '/cryptocurrencies', element: <Cryptocurrencies /> },
       ],
     },
   ]);
