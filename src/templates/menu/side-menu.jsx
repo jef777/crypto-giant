@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { navigationLinks } from './menu_links';
+import Logo from '../../assets/images/cryto-giant-rec.png';
 
 export default function sideMenu({ classNames }) {
   let { pathname } = useLocation();
@@ -23,11 +24,7 @@ export default function sideMenu({ classNames }) {
     <div className="hidden w-28 overflow-y-auto bg-[#ffffff] md:block">
       <div className="flex w-full flex-col items-center ">
         <div className="flex flex-shrink-0 items-center h-16 px-2 ">
-          <img
-            className="rounded-full"
-            src="./images/cryto-giant-rec.png"
-            alt=""
-          />
+          <img className="rounded-full" src={Logo} alt="" />
         </div>
         <div className="mt-6 w-full flex-1 space-y-1 px-2">
           {menuItems.map((item) => (

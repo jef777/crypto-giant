@@ -4,6 +4,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { navigationLinks } from './menu_links';
 
+import Logo from '../../assets/images/cryto-giant-rec.png';
+
 export default function mobileMenu({
   mobileMenuOpen,
   setMobileMenuOpen,
@@ -78,11 +80,7 @@ export default function mobileMenu({
                 </div>
               </Transition.Child>
               <div className="flex flex-shrink-0 items-center px-4 bg-slate-50 py-2 -mt-2">
-                <img
-                  className="rounded-full w-20"
-                  src="./images/cryto-giant-rec.png"
-                  alt=""
-                />
+                <img className="rounded-full w-20" src={Logo} alt="" />
                 <p className=" font-bold text-xl text-slate-500 ">
                   Crypto Giant
                 </p>

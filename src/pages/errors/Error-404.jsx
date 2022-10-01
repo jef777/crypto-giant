@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../../assets/images/cryto-giant-squ.png';
 
 export default function error404() {
   return (
@@ -8,11 +9,7 @@ export default function error404() {
         <div className="flex flex-shrink-0 justify-center">
           <a href="/" className="inline-flex">
             <span className="sr-only">Crypto-Giant</span>
-            <img
-              className="h-24 w-auto"
-              src="/images/cryto-giant-squ.png"
-              alt=""
-            />
+            <img className="h-24 w-auto" src={Logo} alt="" />
           </a>
         </div>
         <div className="py-16">
