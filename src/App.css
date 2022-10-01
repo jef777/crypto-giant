@@ -1,3 +1,4 @@
+/** scrollbar style  **/
 ::-webkit-scrollbar {
   width: 7px;
   height: 16px;
@@ -24,4 +25,38 @@
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+/** animated background style  **/
+
+.bg-custom {
+  min-height: 100vh;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .bg-custom {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+.bg-custom {
+  background-image: radial-gradient(rgba(70, 82, 80, 0.5) 2px, transparent 0),
+    radial-gradient(rgba(70, 82, 80, 0.2) 1px, transparent 0);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  -webkit-animation: app-module__slide__2V-fp 2s linear infinite;
+  animation: app-module__slide__2V-fp 4s linear infinite;
+}
+
+/*! CSS Used keyframes */
+@-webkit-keyframes app-module__slide__2V-fp {
+  100% {
+    background-position: 50px 0, 125px 25px;
+  }
+}
+@keyframes app-module__slide__2V-fp {
+  100% {
+    background-position: 50px 0, 125px 25px;
+  }
 }
