@@ -3,6 +3,9 @@ import millify from 'millify';
 import Icon_card_analytics from './UI/cards/Icon_card_analytics';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
+import Loader from './Loader';
+import Error from '../pages/errors/Error';
+
 const Cryptos = ({ count }) => {
   const coin_count = count ? count : 10;
   const {
@@ -17,8 +20,8 @@ const Cryptos = ({ count }) => {
     setCryptos(cryptosList?.data?.coins);
   }, [cryptosList]);
 
-  if (isFetching) return 'Loading...';
-  if (isError) return 'error !!!';
+  if (isFetching) return <Loader />;
+  if (isError) return <Error errors={error} />;
 
   return (
     <>
