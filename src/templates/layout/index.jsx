@@ -158,7 +158,7 @@ export const Layout = ({ children }) => {
             <main className="flex-1 items-center">
               <section
                 aria-labelledby="primary-heading"
-                className="flex min-w-0 flex-1 flex-col lg:order-last mx-5 md:mx-12 mt-4"
+                className="flex min-w-0 flex-1 flex-col lg:order-last mx-5 md:mx-12 mt-8"
               >
                 <Outlet />
               </section>

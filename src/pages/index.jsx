@@ -3,17 +3,19 @@ import millify from 'millify';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Cryptos from '../components/Cryptos';
 import Plain_headline_analytics from '../components/UI/cards/Plain_headline_analytics';
+import Loader from '../components/Loader';
+import Error from './errors/Error';
 
 const Homepage = () => {
   const { data, isFetching, isError, error } = useGetCryptosQuery(10);
 
   const globalStats = data?.data?.stats;
 
-  if (isFetching) return 'Loading..';
-  if (isError) return 'Error occurred';
+  if (isFetching) return <Loader />;
+  if (isError) return <Error errors={error} />;
 
   return (
-    <>
+    <div className="h-full mb-8">
       <p className="text-3xl text-slate-500 font-bold mb-5 bg-white bg-opacity-50 backdrop-filter py-4 px-4 rounded-lg">
         Cryptocurrency stats
       </p>
@@ -56,7 +58,7 @@ const Homepage = () => {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 
