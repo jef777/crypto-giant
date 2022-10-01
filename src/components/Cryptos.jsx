@@ -6,8 +6,9 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 import Error from '../pages/errors/Error';
 
-const Cryptos = ({ count }) => {
+const Cryptos = ({ count, searchTerm }) => {
   const coin_count = count ? count : 10;
+  const coin_searchTerm = searchTerm ? searchTerm : '';
   const {
     data: cryptosList,
     isFetching,
@@ -18,7 +19,13 @@ const Cryptos = ({ count }) => {
 
   useEffect(() => {
     setCryptos(cryptosList?.data?.coins);
-  }, [cryptosList]);
+
+    const filteredData = cryptosList?.data?.coins.filter((item) =>
+      item.name.toLowerCase().includes(coin_searchTerm)
+    );
+
+    setCryptos(filteredData);
+  }, [cryptosList, coin_searchTerm]);
 
   if (isFetching) return <Loader />;
   if (isError) return <Error errors={error} />;
