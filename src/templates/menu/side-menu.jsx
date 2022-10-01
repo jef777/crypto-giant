@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { sidebarNavigation } from './menu_links';
+import { navigationLinks } from './menu_links';
 
 export default function sideMenu({ classNames }) {
   let { pathname } = useLocation();
@@ -8,7 +8,7 @@ export default function sideMenu({ classNames }) {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
-    let updatedActiveMenu = sidebarNavigation.map((item) => {
+    let updatedActiveMenu = navigationLinks.map((item) => {
       if (item.to == pathname) {
         return { ...item, current: true };
       } else {
