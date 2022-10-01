@@ -1,5 +1,7 @@
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid';
+import millify from 'millify';
 import { Link } from 'react-router-dom';
+import { Tooltip, AreaChart, Area, ResponsiveContainer } from 'recharts';
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -11,6 +13,7 @@ export default function Icon_card_analytics({
   icon,
   change,
   color,
+  sparkline,
   link,
 }) {
   const hex2rgba = (hex, alpha = 1) => {
@@ -31,6 +34,25 @@ export default function Icon_card_analytics({
       return c;
     });
     return mapSparkline;
+  };
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+      return (
+        <div className={`font-bold`}>
+          <div>
+            <p className="px-4">
+              $
+              {millify(payload[0].payload.org_value, {
+                precision: 6,
+              })}
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -81,6 +103,30 @@ export default function Icon_card_analytics({
               </span>
               {change}
             </p>
+            <div className="absolute inset-x-0 bottom-0  ">
+              <ResponsiveContainer width="100%" height={50}>
+                <AreaChart
+                  width={500}
+                  height={200}
+                  data={formatSparkline(sparkline)}
+                  //   syncId="anyId"
+                  margin={{
+                    top: 2,
+                    right: 4,
+                    left: 4,
+                    bottom: 2,
+                  }}
+                >
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area
+                    type="monotone"
+                    dataKey="sp"
+                    stroke={color}
+                    fill={hex2rgba(color, 0.3)}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
           </dd>
         </div>
       </Link>
