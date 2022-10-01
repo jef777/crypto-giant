@@ -77,12 +77,15 @@ export default function mobileMenu({
                   </button>
                 </div>
               </Transition.Child>
-              <div className="flex flex-shrink-0 items-center px-4">
+              <div className="flex flex-shrink-0 items-center px-4 bg-slate-50 py-2 -mt-2">
                 <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=white"
-                  alt="Your Company"
+                  className="rounded-full w-20"
+                  src="./images/cryto-giant-rec.png"
+                  alt=""
                 />
+                <p className=" font-bold text-xl text-slate-500 ">
+                  Crypto Giant
+                </p>
               </div>
               <div className="mt-5 h-0 flex-1 overflow-y-auto px-2">
                 <nav className="flex h-full flex-col">
