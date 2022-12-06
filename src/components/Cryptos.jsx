@@ -20,7 +20,9 @@ const Cryptos = ({ count, searchTerm }) => {
   const [cryptos, setCryptos] = useState([]);
 
   useEffect(() => {
-    setCryptos(cryptosList?.data?.coins);
+    if (cryptosList) {
+      setCryptos(cryptosList?.data?.coins);
+    }
 
     const filteredData = cryptosList?.data?.coins.filter((item) =>
       item.name.toLowerCase().includes(coin_searchTerm)
@@ -31,7 +33,7 @@ const Cryptos = ({ count, searchTerm }) => {
 
   if (isFetching) return <Loader />;
   if (isError) return <Error errors={error} />;
-  if (isSuccess && cryptos.length < 1) return <NoData />;
+  if (isSuccess && cryptos?.length < 1) return <NoData />;
 
   return (
     <>
