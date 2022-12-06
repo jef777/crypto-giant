@@ -3,6 +3,7 @@ import Layout from './templates/layout';
 import HomePage from './pages/index';
 import CryptoDetails from './pages/CryptoDetails';
 import Cryptocurrencies from './pages/Cyptocurencies';
+import CryptoNews from './pages/CryptoNews';
 
 export default function App() {
   const element = useRoutes([
@@ -13,6 +14,7 @@ export default function App() {
         { index: true, element: <HomePage /> },
         { path: '/cryptocurrency/:coinId', element: <CryptoDetails /> },
         { path: '/cryptocurrencies', element: <Cryptocurrencies /> },
+        { path: '/crypto-news', element: <CryptoNews /> },
       ],
     },
   ]);
