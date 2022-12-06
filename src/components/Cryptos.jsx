@@ -5,6 +5,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 
 import Loader from './Loader';
 import Error from '../pages/errors/Error';
+import NoData from '../pages/errors/NoData';
 
 const Cryptos = ({ count, searchTerm }) => {
   const coin_count = count ? count : 10;
@@ -12,10 +13,11 @@ const Cryptos = ({ count, searchTerm }) => {
   const {
     data: cryptosList,
     isFetching,
+    isSuccess,
     isError,
     error,
   } = useGetCryptosQuery(coin_count);
-  const [cryptos, setCryptos] = useState();
+  const [cryptos, setCryptos] = useState([]);
 
   useEffect(() => {
     setCryptos(cryptosList?.data?.coins);
@@ -29,6 +31,7 @@ const Cryptos = ({ count, searchTerm }) => {
 
   if (isFetching) return <Loader />;
   if (isError) return <Error errors={error} />;
+  if (isSuccess && cryptos.length < 1) return <NoData />;
 
   return (
     <>
